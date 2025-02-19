@@ -1336,10 +1336,13 @@ void CAimbotProjectile::Run(CUserCmd* pCmd, C_TFPlayer* pLocal, C_TFWeaponBase* 
 
 			if (bIsFiring && m_TargetPath.size() > 1)
 			{
+				OutputDebugString("ClearAllOverlays\n");
 				I::DebugOverlay->ClearAllOverlays();
 
 				//drawProjPath(pCmd, Target.TimeToTarget);
+				OutputDebugString("DrawMovePath\n");
 				DrawMovePath(m_TargetPath);
+				OutputDebugString("m_TargetPath.clear\n");
 				m_TargetPath.clear();
 			}
 		}

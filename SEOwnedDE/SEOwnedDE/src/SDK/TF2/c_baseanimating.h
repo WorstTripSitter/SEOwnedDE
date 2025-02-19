@@ -160,7 +160,7 @@ public:
 	}
 
 	CStudioHdr *GetModelPtr() {
-		static int nOffset = NetVars::GetNetVar("CBaseAnimating", "m_nMuzzleFlashParity") + 12;
+		static int nOffset = NetVars::GetNetVar("CBaseAnimating", "m_nMuzzleFlashParity") + 16;
 		return *reinterpret_cast<CStudioHdr **>(reinterpret_cast<std::uintptr_t>(this) + nOffset);
 	}
 

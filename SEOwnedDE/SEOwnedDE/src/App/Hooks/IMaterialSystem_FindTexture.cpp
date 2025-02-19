@@ -2,7 +2,7 @@
 
 #include "../Features/CFG.h"
 
-MAKE_HOOK(IMaterialSystem_FindTexture, Memory::GetVFunc(I::MaterialSystem, 81), ITexture*, __fastcall,
+MAKE_HOOK(IMaterialSystem_FindTexture, Memory::GetVFunc(I::MaterialSystem, 79), ITexture*, __fastcall,
 	void* ecx, char const* pTextureName, const char* pTextureGroupName, bool complain, int nAdditionalCreationFlags)
 {
 	ITexture* const result{ CALL_ORIGINAL(ecx, pTextureName, pTextureGroupName, complain, nAdditionalCreationFlags) };
