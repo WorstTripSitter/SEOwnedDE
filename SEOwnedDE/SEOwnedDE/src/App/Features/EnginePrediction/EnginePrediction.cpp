@@ -29,6 +29,7 @@ void CEnginePrediction::Start(CUserCmd* pCmd)
 	{
 		flags = pLocal->m_fFlags();
 
+		I::MoveHelper->SetHost(pLocal);
 		pLocal->SetCurrentCommand(pCmd);
 
 		static constexpr int MAX_INT = std::numeric_limits<int>::max();
@@ -80,6 +81,7 @@ void CEnginePrediction::End()
 		I::GlobalVars->frametime = m_fOldFrameTime;
 		I::GlobalVars->tickcount = m_nOldTickCount;
 
+		I::MoveHelper->SetHost(nullptr);
 		pLocal->SetCurrentCommand(nullptr);
 
 		*SDKUtils::RandomSeed() = -1;

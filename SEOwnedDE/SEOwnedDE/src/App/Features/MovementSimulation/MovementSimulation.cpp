@@ -254,6 +254,8 @@ bool CMovementSimulation::Initialize(C_TFPlayer* pPlayer)
 	//set current command
 	//we'll use this to set current player's command, without it CGameMovement::CheckInterval will try to access a nullptr
 	static CUserCmd dummyCmd = {};
+
+	I::MoveHelper->SetHost(m_pPlayer);
 	m_pPlayer->SetCurrentCommand(&dummyCmd);
 
 	//store player's data
@@ -308,6 +310,7 @@ void CMovementSimulation::Restore()
 	if (!m_pPlayer)
 		return;
 
+	I::MoveHelper->SetHost(nullptr);
 	m_pPlayer->SetCurrentCommand(nullptr);
 
 	m_PlayerDataBackup.Restore(m_pPlayer);

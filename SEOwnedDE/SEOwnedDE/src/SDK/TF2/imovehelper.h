@@ -68,8 +68,18 @@ public:
 	virtual IPhysicsSurfaceProps *GetSurfaceProps(void) = 0;
 	virtual bool IsWorldEntity(const CBaseHandle &handle) = 0;
 
+	inline C_BasePlayer* GetHost()
+	{
+		return *reinterpret_cast<C_BasePlayer**>(uintptr_t(this) + 40);
+	}
+
+	inline void SetHost(C_BasePlayer* pHost)
+	{
+		*reinterpret_cast<C_BasePlayer**>(uintptr_t(this) + 40) = pHost;
+	}
+
 protected:
 	virtual ~IMoveHelper() {}
 };
 
-MAKE_INTERFACE_SIGNATURE(IMoveHelper, MoveHelper, "client.dll", "48 8B 0D ? ? ? ? 48 8B 01 FF 50 ? 0F B7 D7", 0x0, 2); // this might be wrong
+MAKE_INTERFACE_SIGNATURE(IMoveHelper, MoveHelper, "client.dll", "48 8B 0D ? ? ? ? 48 8B 01 FF 50 ? 0F B7 D7", 0x0, 1);
